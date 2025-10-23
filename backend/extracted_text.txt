@@ -1,0 +1,98 @@
+Shreyansh Dixit 
+ 
+ 
+ 
+Location: Kanpur, Maharashtra, 208001 
+Phone no: 9936710385         
+Email: krishnadixit0808@gmail.com 
+Linkedin: 
+https://www.linkedin.com/posts/shreyansh-dixit-33a1a8292_technology-
+future-careers-activity-7171854448703463424-lO3- 
+GitHub: https://github.com/Shreyansh927 
+   
+Skills 
+ 
+Frontend 
+● HTML 
+● CSS 
+● Bootstrap 
+● JavaScript 
+● React.js 
+ Backend 
+● Python 
+● Express 
+● Node.js 
+Data base 
+● SQLite 
+Other Skills 
+● Express(node) 
+● OOPs 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Education 
+Nxtwave Disruptive
+ 
+Technologies                                                    
+May 2023 - Ongoing 
+Industry Ready Certification in Full-stack Development 
+G.H Raisoni College of Engineering and Business and Management, Jalgaon       
+2023 - 2027  
+B Tech (Bachelor of Technology)_Computer Science Engineering (CSE) (8.93 
+CGPA) 
+P.G.P.S (Pankaj Global Public School), Jalgaon                                                         
+2020 - 2022  
+Intermediate_MPC (80.4%) 
+P.G.P.S (Pankaj Global Public School), Jalgaon                                                         
+2019 - 2020  
+Secondary School Of Certificate (85.0%) 
+ 
+Project 
+Todos Application 
+project1_link 
+Technologies used : HTML, CSS, JS, Bootstrap 
+A task management solution, designed to make life easier. 
+● Streamlined task management through a combination of HTML, CSS, and 
+Bootstrap for an intuitive interface.  
+● Seamless CRUD operations through JavaScript event listeners and 
+dynamic UI updates.  
+● Secure task persistence with local storage methods, ensuring that your 
+tasks are always available.  
+ 
+Tasty Kitchens (Swiggy/Zomato Clone) 
+project2_link 
+Technologies used : HTML, CSS, JavaScript, React JS, Bootstrap, React Slick, 
+Figma, client storage. 
+
+ 
+Constructed an engaging Online Food Ordering Service akin to Swiggy/Zomato, 
+enabling users to discover top restaurants, obtain in-depth restaurant details, 
+manage their cart, and process payments. 
+● Set up unique routes for features such as login, home screen, individual 
+restaurant data, and cart management using React Router components 
+(Route, Switch, Link).  
+● Incorporated a fluid horizontal scrolling capability (carousel images) on 
+the home screen with the help of the React Slick library.  
+● Developed visually striking and exact React components by following 
+Figma mockups and using REST APIs to fetch popular restaurants and 
+specific restaurant information.  
+ 
+Movies App (Netflix/Amazon Prime Clone) 
+project3_link 
+Technologies used : HTML, CSS, JavaScript, React JS, Bootstrap, React Slick, 
+Figma, client storage. 
+Built a dynamic, feature-rich OTT platform for movie enthusiasts. 
+● Utilized React Router for seamless navigation, React Slick for horizontal 
+scrolling, and Figma for UI design.  
+● Integrated TMDb APIs for movie database and authentication, and used 
+client storage to persist login state.  
+                                                                                
+ 
+Weather Website 
+project4_link 
+Technologies used : HTML, CSS, JavaScript, Bootstrap 
+Get latest whether of any place , at any point any where...

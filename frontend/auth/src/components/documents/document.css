@@ -1,0 +1,242 @@
+.main-document-container {
+  
+  font-family: Poppins;
+  height: 50vh;
+
+  position: relative;
+}
+
+.hidden-summary-container {
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  top: 50%;
+  left: -850%;
+  transition: all 0.4s ease-in-out;
+}
+
+.visible-summary-container {
+  position: absolute;
+  padding: 20px;
+  height: 500px;
+  width: 50%;
+  top: 10%;
+  left: 25%;
+  list-style-type: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: auto;
+  transition: all 0.4s ease-in-out;
+  z-index: 100;
+}
+
+.buttons-container {
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  z-index: 100;
+}
+
+.document-image {
+  max-width: 100%;
+  height: auto;
+  transition: all 0.4s ease-in-out;
+}
+
+.buttons {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(163, 11, 70),
+    rgb(7, 54, 107),
+    rgb(235, 30, 197)
+  );
+  cursor: pointer;
+}
+
+.download-button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(24, 52, 17),
+    rgb(32, 106, 24),
+    rgb(83, 221, 52)
+  );
+  cursor: pointer;
+}
+
+.lock-button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(226, 204, 33),
+    rgb(110, 89, 5),
+    rgb(255, 195, 92)
+  );
+  cursor: pointer;
+}
+
+.delete-button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(156, 47, 4),
+    rgb(114, 4, 4),
+    rgb(220, 27, 72)
+  );
+  cursor: pointer;
+}
+
+.summary-button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(163, 11, 70),
+    rgb(7, 54, 107),
+    rgb(235, 30, 197)
+  );
+  cursor: pointer;
+}
+
+.searching-summary-button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  background-position: -10% 50%;
+  background-size: 200%;
+  margin-right: 20px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    135deg,
+    rgb(163, 11, 70),
+    rgb(7, 54, 107),
+    rgb(235, 30, 197)
+  );
+  cursor: pointer;
+  animation: animate-search 1s infinite;
+}
+
+.searching-time-main-document-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.searching-time-main-document-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1); /* Overlay shadow effect */
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes animate-search {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.download-button:hover {
+  background-position: -100% 50%;
+  transform: scale(1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.lock-button:hover {
+  background-position: -100% 50%;
+  transform: scale(1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.summary-button:hover {
+  background-position: -100% 50%;
+  transform: scale(1) rotate(90deg);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.delete-button:hover {
+  background-position: -100% 50%;
+  transform: scale(1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .main-document-container {
+    height: 30vh;
+    width: 80vw;
+  }
+  .buttons-container {
+    left: 60%;
+    transform: translateX(-50%);
+  }
+}

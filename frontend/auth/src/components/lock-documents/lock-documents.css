@@ -1,0 +1,85 @@
+.main-document-lock-container {
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(135deg, #ffffff, #1010bd, #ffffff);
+  animation: new-anime infinite alternate-reverse 2s;
+  transition: all 1s;
+  background-size: 200%;
+  position: relative;
+}
+
+.main-document-lock-container-setting-lock {
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(135deg, #e2eeed, #1010bd, #ffffff);
+  animation: new-anime infinite alternate-reverse 2s;
+  transition: all 1s;
+  background-size: 200%;
+  position: relative;
+}
+
+@keyframes new-anime {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: -40% 50%;
+  }
+}
+
+.document-lock-image-container {
+  position: relative;
+}
+
+.lock-jpg {
+  max-width: 100%;
+  height: 500px;
+  z-index: 100;
+  background-color: transparent;
+  mix-blend-mode: multiply;
+  pointer-events: none; /* so it doesn’t interfere with clicking main image */
+}
+
+.document-lock-password-container {
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  position: relative;
+  background-color: white;
+}
+
+.lock-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, #91fb95 0%, #06720e 100%);
+}
+
+.lock-icon {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.doc-lock {
+  width: 90%;
+
+  border-radius: 5px;
+  font-size: 16px;
+}
