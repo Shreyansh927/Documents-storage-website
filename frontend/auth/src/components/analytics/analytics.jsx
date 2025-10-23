@@ -35,7 +35,7 @@ const Analytics = () => {
     const encodedEmail = encodeURIComponent(userEmail);
     try {
       const res = await fetch(
-        `http://localhost:4000/api/auth/analytics?email=${encodedEmail}`
+        `https://documents-storage-website-backend-2.onrender.com/api/auth/analytics?email=${encodedEmail}`
       );
       const data = await res.json();
       setTotalUsers(data.totalUsers);

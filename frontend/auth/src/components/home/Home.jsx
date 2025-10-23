@@ -11,7 +11,7 @@ import axios from "axios";
 import CryptoJS from "crypto-js";
 import Header from "../header/header";
 
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://documents-storage-website-backend-2.onrender.com";
 
 const Home = () => {
   const [userName, setUserName] = useState("");

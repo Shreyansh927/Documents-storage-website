@@ -20,7 +20,7 @@ const LockDocuments = () => {
   const lockTheDocument = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/set-document-password",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/set-document-password",
         {
           // Body data
           lock: password,

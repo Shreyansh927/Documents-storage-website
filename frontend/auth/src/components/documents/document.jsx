@@ -10,7 +10,7 @@ import "./document.css";
 
 const Document = () => {
   const { encryptedLink, cryptoSecretKey, documentName } = useParams();
-  const BASE_URL = "http://localhost:4000"; // local server
+  const BASE_URL = "https://documents-storage-website-backend-2.onrender.com"; // local server
   const navigate = useNavigate();
 
   const [fileUrl, setFileUrl] = useState("");
@@ -106,7 +106,7 @@ const Document = () => {
       if (!email) return alert("User not logged in");
 
       const relativePath = fileUrl.replace(BASE_URL, "");
-      const apiUrl = `http://localhost:4000/api/auth/check-auth?deleteFilePath=${encodeURIComponent(
+      const apiUrl = `https://documents-storage-website-backend-2.onrender.com/api/auth/check-auth?deleteFilePath=${encodeURIComponent(
         relativePath
       )}&email=${encodeURIComponent(email)}`;
 
@@ -133,7 +133,7 @@ const Document = () => {
     setIsSummaryLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:4000/document-summary?filePath=${encodeURIComponent(
+        `https://documents-storage-website-backend-2.onrender.com/document-summary?filePath=${encodeURIComponent(
           relativePath
         )}`
       );

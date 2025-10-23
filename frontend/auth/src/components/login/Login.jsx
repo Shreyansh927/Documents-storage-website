@@ -57,7 +57,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/login",
         formData,
         { withCredentials: true } // ensures cookie is stored
       );

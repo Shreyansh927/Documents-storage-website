@@ -26,7 +26,7 @@ const EditProfile = () => {
     const encodedEmail = encodeURIComponent(email);
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/userinfo/${encodedEmail}`
+        `https://documents-storage-website-backend-2.onrender.com/api/userinfo/${encodedEmail}`
       );
       const {
         nameInfo,
@@ -66,7 +66,7 @@ const EditProfile = () => {
       }
 
       const { data } = await axios.put(
-        "http://localhost:4000/api/auth/edit-profile",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/edit-profile",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

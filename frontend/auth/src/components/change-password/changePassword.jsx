@@ -15,7 +15,7 @@ const ChangePassword = () => {
 
     try {
       const result = await axios.put(
-        "http://localhost:4000/api/auth/change-password",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/change-password",
         { email: userEmail, newPassword }
       );
       alert(result.data); // now consistent

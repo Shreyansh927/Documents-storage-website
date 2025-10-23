@@ -12,7 +12,7 @@ const VerifyEmail = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/verify-user-email",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/verify-user-email",
         { email }
       );
 
@@ -30,7 +30,7 @@ const VerifyEmail = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/verify-otp",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/verify-otp",
         { email, otp }
       );
 

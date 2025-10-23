@@ -16,7 +16,7 @@ const UploadDocuments = () => {
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
-  const BASE_URL = "http://localhost:4000";
+  const BASE_URL = "https://documents-storage-website-backend-2.onrender.com";
 
   useEffect(() => {
     const name = localStorage.getItem("userName");

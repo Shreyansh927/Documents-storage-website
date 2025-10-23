@@ -33,7 +33,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/auth/signup",
+        "https://documents-storage-website-backend-2.onrender.com/api/auth/signup",
         formData
       );
       alert(response.data.message); // ✅ fixed

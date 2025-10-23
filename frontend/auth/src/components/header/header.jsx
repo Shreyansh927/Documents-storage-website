@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./header.css";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://documents-storage-website-backend-2.onrender.com";
 
 const Header = () => {
   const navigate = useNavigate();
