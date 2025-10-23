@@ -194,8 +194,8 @@ const authRoutes = (db) => {
 
       res.cookie("jwtToken", jwtToken, {
         httpOnly: false,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "none",
+        secure: true,
         maxAge: 60 * 60 * 1000,
       });
 
