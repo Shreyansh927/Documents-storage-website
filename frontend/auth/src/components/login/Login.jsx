@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -11,17 +11,12 @@ import "slick-carousel/slick/slick-theme.css";
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const jwtToken = Cookies.get("jwtToken");
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    if (jwtToken) {
-      return navigate("/home");
-    }
-  }, [jwtToken]);
+
 
   const sliderSettings = {
     dots: true,
