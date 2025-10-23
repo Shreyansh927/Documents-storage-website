@@ -65,8 +65,7 @@ const Login = () => {
       const { name, message } = response.data;
       localStorage.setItem("userName", name);
       localStorage.setItem("userEmail", formData.email); //  fixed
-      alert(message);
-
+      console.log(" Login successful:", message);
       // ✅ redirect after login
       navigate("/home", { replace: true });
     } catch (error) {

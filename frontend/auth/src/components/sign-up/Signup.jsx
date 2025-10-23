@@ -36,7 +36,7 @@ const Signup = () => {
         "https://documents-storage-website-backend-2.onrender.com/api/auth/signup",
         formData
       );
-      alert(response.data.message); // ✅ fixed
+      console.log("✅ Signup successful:", response.data);
       localStorage.setItem("usernaam", formData.name);
       localStorage.setItem("address", formData.location);
       localStorage.setItem("useremail", formData.email);
