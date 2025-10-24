@@ -25,42 +25,39 @@ const UploadDocuments = () => {
     setUserEmail(email || "");
   }, []);
 
-  // ✅ Proper upload handler
-const uploadDocument = async () => {
-  if (!files.length || !documentName.trim()) {
-    alert("Please provide a document name and select a file.");
-    return;
-  }
+  const uploadDocument = async () => {
+    if (!files.length || !documentName.trim()) {
+      alert("Please provide a document name and select a file.");
+      return;
+    }
 
-  setUploading(true);
+    setUploading(true);
 
-  const formData = new FormData();
-  formData.append("email", userEmail);
-  formData.append("document", files[0]);
-  formData.append("documentName", documentName);
+    const formData = new FormData();
+    formData.append("document", files[0]);
+    formData.append("documentName", documentName);
 
-  try {
-    const res = await axios.post(
-      `${BASE_URL}/api/auth/upload-document`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/api/auth/upload-document/${encodeURIComponent(userEmail)}`, // email in URL
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-    setFiles([]);
-    setDocumentName("");
-    navigate("/home"); // redirect after upload
-  } catch (err) {
-    console.error("❌ Upload failed:", err);
-    alert("Failed to upload document. Please try again.");
-  } finally {
-    setUploading(false);
-  }
-};
-
+      setFiles([]);
+      setDocumentName("");
+      navigate("/home"); // redirect after upload
+    } catch (err) {
+      console.error("❌ Upload failed:", err);
+      alert("Failed to upload document. Please try again.");
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const uploader = () => {
     setUploading(true);
