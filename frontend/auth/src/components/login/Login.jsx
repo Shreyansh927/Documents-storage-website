@@ -61,7 +61,7 @@ const Login = () => {
       console.log(" Login successful:", message);
 
       // ✅ redirect after login
-      navigate("/home");
+      navigate("/home", { replace: true });
     } catch (error) {
       alert(error.response?.data || "Login failed");
     }
