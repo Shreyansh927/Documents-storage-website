@@ -339,6 +339,25 @@ const authRoutes = (db) => {
         );
         if (!user) return res.status(404).json({ error: "User not found" });
 
+        // Upload file to Supabase
+        const { data, error } = await supabase.storage
+          .from(SUPABASE_BUCKET)
+          .upload(
+            `documents/${Date.now()}-${req.file.originalname}`,
+            req.file.buffer,
+            {
+              cacheControl: "3600",
+              upsert: true,
+              contentType: req.file.mimetype,
+            }
+          );
+
+        if (error) {
+          console.error("Supabase upload error:", error.message);
+          return res.status(500).json({ success: false, error: error.message });
+        }
+
+        // Save encrypted link in DB
         let docsArray = [];
         try {
           docsArray = JSON.parse(user.documents || "[]");
@@ -348,7 +367,7 @@ const authRoutes = (db) => {
 
         const newDoc = {
           link: CryptoJS.AES.encrypt(
-            "/uploads/" + req.file.filename,
+            `/documents/${data.path}`,
             user.secretCryptoKey
           ).toString(),
           documentName: CryptoJS.AES.encrypt(
@@ -359,12 +378,14 @@ const authRoutes = (db) => {
         };
 
         docsArray.push(newDoc);
+
         await db.run("UPDATE user SET documents = ? WHERE email = ?", [
           JSON.stringify(docsArray),
           email,
         ]);
 
         await backupUsersDB();
+
         res.json({ success: true, documents: docsArray });
       } catch (err) {
         console.error(err);
