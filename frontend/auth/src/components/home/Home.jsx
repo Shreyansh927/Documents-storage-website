@@ -265,11 +265,18 @@ const Home = () => {
                           }}
                         >
                           <div className="demo-image-card-container">
-                            <iframe
+                            <video
                               src={`${BASE_URL}/${doc.link}`}
-                              className="demo-image"
                               controls
-                            />
+                              style={{
+                                height: "100vh",
+                                width: "100vw",
+                                borderRadius: "10px",
+                                background: "#000",
+                              }}
+                            >
+                              Your browser does not support the video tag.
+                            </video>
 
                             <div className="demo-image-card-info">
                               <div className="padd">
