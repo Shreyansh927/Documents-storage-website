@@ -59,6 +59,7 @@ const Login = () => {
       localStorage.setItem("userName", name);
       localStorage.setItem("userEmail", formData.email); //  fixed
       console.log(" Login successful:", message);
+      alert(message)
       // ✅ redirect after login
       window.location.href = "/home";
     } catch (error) {
