@@ -193,9 +193,9 @@ const authRoutes = (db) => {
       );
 
       res.cookie("jwtToken", jwtToken, {
-        httpOnly: false,
-        sameSite: "none",
-        secure: true,
+        httpOnly: true, // safer, frontend JS cannot read it
+        secure: process.env.NODE_ENV === "production", // only true on Render
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 60 * 60 * 1000,
       });
 
