@@ -102,7 +102,7 @@ const authRoutes = (db) => {
       res.status(201).json({ message: "User registered successfully" });
     } catch (err) {
       console.error(err);
-      res.status(500).json({ message: "Signup failed", error: err.message });
+      res.status(500).json({ message: err, error: err.message });
     }
   });
 
