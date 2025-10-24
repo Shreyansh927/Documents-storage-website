@@ -74,61 +74,6 @@ const startServer = async () => {
       }
     });
 
-    // ---------- TODOS ----------
-    app.get("/api/todos/:email", async (req, res) => {
-      const email = decodeURIComponent(req.params.email);
-      console.log(" GET todos request for:", email);
-      try {
-        const user = await db.get("SELECT todos FROM user WHERE email = ?", [
-          email,
-        ]);
-        if (!user) return res.status(404).json({ error: "User not found" });
-
-        let todos = [];
-        try {
-          todos = user.todos ? JSON.parse(user.todos) : [];
-        } catch {
-          todos = [];
-        }
-
-        res.json({ todos });
-      } catch (err) {
-        console.error(" Error fetching todos:", err);
-        res.status(500).json({ error: "Error fetching todos" });
-      }
-    });
-
-    app.post("/api/todos/:email", async (req, res) => {
-      const email = decodeURIComponent(req.params.email);
-      const { task } = req.body;
-      console.log(" Add todo request:", email, task);
-
-      try {
-        const user = await db.get("SELECT todos FROM user WHERE email = ?", [
-          email,
-        ]);
-        if (!user) return res.status(404).send("User not found");
-
-        let todos = [];
-        try {
-          todos = user.todos ? JSON.parse(user.todos) : [];
-        } catch {
-          todos = [];
-        }
-
-        todos.push(task);
-        await db.run("UPDATE user SET todos = ? WHERE email = ?", [
-          JSON.stringify(todos),
-          email,
-        ]);
-
-        res.json(todos);
-      } catch (err) {
-        console.error(" Error updating todos:", err);
-        res.status(500).send("Error updating todos");
-      }
-    });
-
     // ---------- User Info ----------
     app.get("/api/userinfo/:email", async (req, res) => {
       const email = decodeURIComponent(req.params.email);

@@ -59,7 +59,6 @@ const initDB = async () => {
       password TEXT,
       email TEXT UNIQUE,
       location TEXT,
-      todos TEXT DEFAULT '[]',
       otp TEXT DEFAULT "",
       profileImage TEXT,
       profileVideo TEXT,
