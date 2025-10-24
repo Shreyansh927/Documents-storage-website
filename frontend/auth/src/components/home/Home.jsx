@@ -183,7 +183,7 @@ const Home = () => {
                     >
                       <div className="demo-image-card-container">
                         <iframe
-                          src={`${doc.link}`}
+                          src={`${BASE_URL}/${doc.link}`}
                           className="demo-image"
                           controls
                         />
@@ -230,7 +230,7 @@ const Home = () => {
                         >
                           <div className="demo-image-card-container">
                             <img
-                              src={`${doc.link}`}
+                              src={`${BASE_URL}/${doc.link}`}
                               className="demo-image"
                               alt="img"
                             />
@@ -271,7 +271,7 @@ const Home = () => {
                         >
                           <div className="demo-image-card-container">
                             <iframe
-                              src={`${doc.link}`}
+                              src={`${BASE_URL}/${doc.link}`}
                               className="demo-image"
                               controls
                             />
