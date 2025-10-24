@@ -261,7 +261,7 @@ const Document = () => {
           <PiLockKeyFill />
         </button>
       </div>
-
+      <p>{fileUrl}</p>
       <div
         className={
           extractedText ? "visible-summary-container" : "summary-container"
