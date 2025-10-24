@@ -111,7 +111,9 @@ const Home = () => {
   return (
     <>
       <div className="cc">
-        <div className="c"></div>
+        <div className="c">
+          <Header />
+        </div>
 
         <div style={{ padding: "20px" }}>
           <h2 className="welcome-message">Welcome, {userName}!</h2>
