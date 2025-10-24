@@ -24,7 +24,6 @@
 .demo-image-card-container {
   position: relative;
   border-radius: 20px;
-  
 }
 
 .padd {
@@ -35,7 +34,11 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(to bottom, rgba(29, 28, 28, 0.7), rgb(5, 5, 5));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(29, 28, 28, 0.7),
+    rgb(5, 5, 5)
+  );
   width: 100%;
   top: 85.7%;
   left: 50%;
@@ -125,7 +128,7 @@
 .upload-section {
   position: fixed;
   bottom: 5%;
-  right: 5%;
+  right: 30%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
   padding: 20px;
   display: flex;
