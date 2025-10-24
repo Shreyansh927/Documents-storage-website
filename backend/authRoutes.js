@@ -25,7 +25,7 @@ const SUPABASE_BUCKET = process.env.SUPABASE_BUCKET;
 const createCryptoSecretKey = () => crypto.randomBytes(32).toString("hex");
 
 // ---------- Ensure temporary uploads folder exists ----------
-const TEMP_UPLOAD_DIR = "/tmp/uploads";
+const TEMP_UPLOAD_DIR = "uploads";
 if (!fs.existsSync(TEMP_UPLOAD_DIR))
   fs.mkdirSync(TEMP_UPLOAD_DIR, { recursive: true });
 
@@ -335,7 +335,7 @@ const authRoutes = (db) => {
 
         const newDoc = {
           link: CryptoJS.AES.encrypt(
-            "/tmp/uploads/" + req.file.filename,
+            "uploads/" + req.file.filename,
             user.secretCryptoKey
           ).toString(),
           documentName: CryptoJS.AES.encrypt(
