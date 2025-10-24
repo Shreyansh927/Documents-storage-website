@@ -128,7 +128,7 @@
 .upload-section {
   position: fixed;
   bottom: 5%;
-  right: 30%;
+  right: 10%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
   padding: 20px;
   display: flex;

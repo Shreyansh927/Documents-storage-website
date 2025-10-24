@@ -116,7 +116,7 @@ const Home = () => {
         </div>
 
         <div style={{ padding: "20px" }}>
-          <h2 className="welcome-message">Welcome, {userName}!</h2>
+          <h1 className="welcome-message">Welcome, {userName}!</h1>
           <hr className="header-hr" />
           <div className="search-and-category-conatiner">
             <div className="search-box-container">
@@ -152,7 +152,7 @@ const Home = () => {
 
           <hr className="header-hr" />
 
-          <h3>Your Documents:</h3>
+          <h2>Your Documents:</h2>
           <ul className="all-documents" style={{ marginBottom: "50px" }}>
             {documents.length === 0 ? (
               <p>No documents uploaded yet.</p>
@@ -255,20 +255,13 @@ const Home = () => {
                               cryptoSecretKey
                             ).toString();
 
-                            if (!doc.documentLock) {
-                              // Navigate to verify password page
-                              navigate(
-                                `/document/${encodeURIComponent(
-                                  encryptedLink
-                                )}/${encodeURIComponent(
-                                  cryptoSecretKey
-                                )}/${encodeURIComponent(doc.documentName)}`
-                              );
-                            } else {
-                              // Navigate directly to the document page
-
-                              navigate("/verify-document-password");
-                            }
+                            navigate(
+                              `/document/${encodeURIComponent(
+                                encryptedLink
+                              )}/${encodeURIComponent(
+                                cryptoSecretKey
+                              )}/${encodeURIComponent(doc.documentName)}`
+                            );
                           }}
                         >
                           <div className="demo-image-card-container">
