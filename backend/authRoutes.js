@@ -1,6 +1,6 @@
 // authRoutes.js
 import express from "express";
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
@@ -86,25 +86,25 @@ const authRoutes = (db) => {
       );
 
       // Send welcome email
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
-      });
+  //     const transporter = nodemailer.createTransport({
+  //       service: "gmail",
+  //       auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
+  //     });
 
-      await transporter.sendMail({
-        from: process.env.GMAIL_USER,
-        to: email,
-        subject: "Welcome to Krish.com ",
-        text: `Hello ${name},\n\nWelcome to Krish.com! Your account has been created successfully.\n\nBest Regards,\nTeam Krish`,
-      });
+  //     await transporter.sendMail({
+  //       from: process.env.GMAIL_USER,
+  //       to: email,
+  //       subject: "Welcome to Krish.com ",
+  //       text: `Hello ${name},\n\nWelcome to Krish.com! Your account has been created successfully.\n\nBest Regards,\nTeam Krish`,
+  //     });
 
-      await backupUsersDB();
-      res.status(201).json({ message: "User registered successfully" });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: err, error: err.message });
-    }
-  });
+  //     await backupUsersDB();
+  //     res.status(201).json({ message: "User registered successfully" });
+  //   } catch (err) {
+  //     console.error(err);
+  //     res.status(500).json({ message: err, error: err.message });
+  //   }
+  // });
 
   router.put("/change-password", async (req, res) => {
     try {
