@@ -210,7 +210,7 @@
 /* Mobile phones / small screens */
 @media (max-width: 580px) {
   .all-documents {
-    grid-template-columns: repeat(1, 1fr); /* 1 column */
+    grid-template-columns: repeat(2, 1fr); /* 1 column */
   }
 
   .cc {
@@ -219,6 +219,7 @@
     align-items: center;
     width: 100%;
     flex-direction: column;
+    padding-left: 10%;
   }
 
   .p {
@@ -248,7 +249,7 @@
   }
 
   .search-box-container {
-    width: 40%;
+    width: 50%;
   }
 
   .category-button {
