@@ -183,7 +183,7 @@ const Home = () => {
                     >
                       <div className="demo-image-card-container">
                         <iframe
-                          src={`${BASE_URL}${doc.link}`}
+                          src={`${doc.link}`}
                           className="demo-image"
                           controls
                         />
@@ -230,7 +230,7 @@ const Home = () => {
                         >
                           <div className="demo-image-card-container">
                             <img
-                              src={`${BASE_URL}${doc.link}`}
+                              src={`${doc.link}`}
                               className="demo-image"
                               alt="img"
                             />
@@ -271,7 +271,7 @@ const Home = () => {
                         >
                           <div className="demo-image-card-container">
                             <iframe
-                              src={`${BASE_URL}${doc.link}`}
+                              src={`${doc.link}`}
                               className="demo-image"
                               controls
                             />
@@ -311,7 +311,7 @@ const Home = () => {
                     <img
                       src={`${BASE_URL}${each.img}`}
                       alt={each.name}
-                      classNames="folder-icon"
+                      className="folder-icon"
                       style={{
                         width: "50px",
                         height: "50px",
@@ -324,7 +324,7 @@ const Home = () => {
                     <img
                       src="https://i.pinimg.com/736x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg"
                       alt={each.name}
-                      classNames="folder-icon"
+                      className="folder-icon"
                       style={{
                         width: "50px",
                         height: "50px",
