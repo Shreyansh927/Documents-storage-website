@@ -3,7 +3,7 @@ import "./uploadDocuments.css";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { IoCloudUpload } from "react-icons/io5"; // ✅ Make sure you have react-icons installed
+import { IoCloudUpload } from "react-icons/io5";
 import { PiLampPendantFill } from "react-icons/pi";
 import { FaStar } from "react-icons/fa";
 import Header from "../header/header";
@@ -14,6 +14,7 @@ const UploadDocuments = () => {
   const [files, setFiles] = useState([]);
   const [documentName, setDocumentName] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
   const BASE_URL = "https://documents-storage-website-backend-2.onrender.com";
@@ -32,6 +33,7 @@ const UploadDocuments = () => {
     }
 
     setUploading(true);
+    setProgress(0);
 
     const formData = new FormData();
     formData.append("document", files[0]);
@@ -39,31 +41,34 @@ const UploadDocuments = () => {
 
     try {
       const res = await axios.post(
-        `${BASE_URL}/api/auth/upload-document/${encodeURIComponent(userEmail)}`, // email in URL
+        `${BASE_URL}/api/auth/upload-document/${encodeURIComponent(userEmail)}`,
         formData,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
+          headers: { "Content-Type": "multipart/form-data" },
+          onUploadProgress: (progressEvent) => {
+            const percent = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percent);
           },
         }
       );
 
-      setFiles([]);
-      setDocumentName("");
-      navigate("/home"); // redirect after upload
+      if (res.data.success) {
+        alert("Document uploaded successfully!");
+        setFiles([]);
+        setDocumentName("");
+        navigate("/home");
+      } else {
+        alert("Upload failed, please try again.");
+      }
     } catch (err) {
       console.error("❌ Upload failed:", err);
       alert("Failed to upload document. Please try again.");
     } finally {
       setUploading(false);
+      setProgress(0);
     }
-  };
-
-  const uploader = () => {
-    setUploading(true);
-    setTimeout(() => {
-      uploadDocument();
-    }, 7000);
   };
 
   return (
@@ -75,11 +80,9 @@ const UploadDocuments = () => {
             <PiLampPendantFill />
           </div>
           <div>
-            {uploading && documentName && files ? (
+            {uploading && files.length ? (
               <div className="star-container">
                 <FaStar className="star" />
-                <div className="star-div"></div>
-
                 <div className="star-div"></div>
                 <div className="star-div"></div>
                 <div className="star-div"></div>
@@ -88,65 +91,50 @@ const UploadDocuments = () => {
             ) : (
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
-                alt="img"
+                alt="document"
                 className="document-upload-image"
                 style={{ backgroundColor: "transparent" }}
               />
             )}
           </div>
         </div>
-        <div>
-          <div
-            className="uploading-container"
-            draggable="true"
-            style={{ padding: "20px", fontFamily: "Poppins" }}
-          >
-            <div className="cool-button-container">
-              <div className="cool-button">
-                <IoCloudUpload className="cloud-icon" />
-              </div>
+
+        <div
+          className="uploading-container"
+          style={{ padding: "20px", fontFamily: "Poppins" }}
+        >
+          <div className="cool-button-container">
+            <div className="cool-button">
+              <IoCloudUpload className="cloud-icon" />
             </div>
-
-            <input
-              type="text"
-              value={documentName}
-              placeholder="Enter document name..."
-              onChange={(e) => setDocumentName(e.target.value)}
-              className="upload-inputs"
-              required
-            />
-
-            <input
-              type="file"
-              name="document"
-              onChange={(e) => setFiles([...e.target.files])}
-              className="upload-inputs"
-              placeholder="Enter document name..."
-              required
-            />
-
-            {uploading && documentName && files ? (
-              <button onClick={uploader} className="glow-btn2">
-                <IoCloudUpload className="i" />
-                Uploading
-              </button>
-            ) : (
-              <button onClick={uploader} className="glow-btn">
-                <IoCloudUpload className="i" />
-                Upload
-              </button>
-            )}
-            <div className="dash-container">
-              <div className="line"></div>
-              <p className="or-text">OR</p>
-              <div className="line"></div>
-            </div>
-
-            <button className="glow-btn">
-              <IoCloudUpload className="i" />
-              Drag and Drop
-            </button>
           </div>
+
+          <input
+            type="text"
+            value={documentName}
+            placeholder="Enter document name..."
+            onChange={(e) => setDocumentName(e.target.value)}
+            className="upload-inputs"
+            required
+          />
+
+          <input
+            type="file"
+            onChange={(e) => setFiles([...e.target.files])}
+            className="upload-inputs"
+            required
+          />
+
+          <button
+            onClick={uploadDocument}
+            className={uploading ? "glow-btn2" : "glow-btn"}
+            disabled={uploading}
+          >
+            <IoCloudUpload className="i" />
+            {uploading ? `Uploading (${progress}%)` : "Upload"}
+          </button>
+
+          {uploading && <ClipLoader size={25} color="#36d7b7" />}
         </div>
       </div>
     </>
