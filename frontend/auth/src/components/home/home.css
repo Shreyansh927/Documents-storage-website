@@ -213,6 +213,14 @@
     grid-template-columns: repeat(2, 1fr); /* 1 column */
   }
 
+  .cc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+  }
+
   .p {
     font-size: 12px;
   }
