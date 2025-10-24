@@ -217,7 +217,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 120%;
     flex-direction: column;
   }
 
