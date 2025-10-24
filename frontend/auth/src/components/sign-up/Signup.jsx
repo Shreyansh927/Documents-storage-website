@@ -34,7 +34,8 @@ const Signup = () => {
     try {
       const response = await axios.post(
         "https://documents-storage-website-backend-2.onrender.com/api/auth/signup",
-        formData
+        formData,
+        { withCredentials: true }
       );
       console.log("✅ Signup successful:", response.data);
       localStorage.setItem("usernaam", formData.name);
