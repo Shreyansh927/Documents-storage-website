@@ -85,7 +85,7 @@ const authRoutes = (db) => {
         [finalSecretKey, username, name, hashedPassword, email, location, "[]"]
       );
 
-       //Send welcome email
+      //Send welcome email
       // const transporter = nodemailer.createTransport({
       //   service: "gmail",
       //   auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
@@ -294,12 +294,16 @@ const authRoutes = (db) => {
 
   // ---------- UPLOAD DOCUMENT ----------
   router.post(
-    "/upload-document",
+    "/upload-document/:email",
     upload.single("document"),
     async (req, res) => {
-      const { email, documentName } = req.body;
+      const { email } = req.params; // email comes from URL params
+      const { documentName } = req.body;
+
       if (!email) return res.status(400).json({ error: "Email required" });
       if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+      if (!documentName)
+        return res.status(400).json({ error: "Document name required" });
 
       try {
         const user = await db.get(
@@ -333,10 +337,11 @@ const authRoutes = (db) => {
           email,
         ]);
 
-        await backupUsersDB();
+        if (typeof backupUsersDB === "function") await backupUsersDB();
+
         res.json({ success: true, documents: docsArray });
       } catch (err) {
-        console.error(err);
+        console.error("Upload document error:", err);
         res.status(500).json({ success: false, error: err.message });
       }
     }
