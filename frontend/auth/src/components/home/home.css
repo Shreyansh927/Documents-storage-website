@@ -218,9 +218,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     flex-direction: column;
-    
+    padding-left: 20%;
   }
 
   .p {
