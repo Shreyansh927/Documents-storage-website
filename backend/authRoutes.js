@@ -24,9 +24,14 @@ const SUPABASE_BUCKET = process.env.SUPABASE_BUCKET;
 // ---------- AES Key Generator ----------
 const createCryptoSecretKey = () => crypto.randomBytes(32).toString("hex");
 
+// ---------- Ensure temporary uploads folder exists ----------
+const TEMP_UPLOAD_DIR = "/tmp/uploads";
+if (!fs.existsSync(TEMP_UPLOAD_DIR))
+  fs.mkdirSync(TEMP_UPLOAD_DIR, { recursive: true });
+
 // ---------- Multer Setup ----------
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
+  destination: (req, file, cb) => cb(null, TEMP_UPLOAD_DIR),
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
@@ -50,7 +55,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 1024 * 1024 * 500 }, // 500 MB max
+  limits: { fileSize: 1024 * 1024 * 500 }, // 500 MB
 });
 
 // ---------- Backup users.db to Supabase ----------
@@ -302,13 +307,11 @@ const authRoutes = (db) => {
     }
   );
   // ---------- UPLOAD DOCUMENT ----------
-  // ---------- UPLOAD DOCUMENT ----------
   router.post(
     "/upload-document/:email",
     upload.single("document"),
     async (req, res) => {
-      // decode the email from URL params
-      const email = decodeURIComponent(req.params.email);
+      let email = decodeURIComponent(req.params.email);
       const { documentName } = req.body;
 
       if (!email) return res.status(400).json({ error: "Email required" });
@@ -332,7 +335,7 @@ const authRoutes = (db) => {
 
         const newDoc = {
           link: CryptoJS.AES.encrypt(
-            "/uploads/" + req.file.filename,
+            "/tmp/uploads/" + req.file.filename,
             user.secretCryptoKey
           ).toString(),
           documentName: CryptoJS.AES.encrypt(
