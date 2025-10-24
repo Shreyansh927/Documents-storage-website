@@ -1,6 +1,6 @@
 // authRoutes.js
 import express from "express";
-import nodemailer from "nodemailer";
+
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
@@ -84,19 +84,6 @@ const authRoutes = (db) => {
         "INSERT INTO user (secretCryptoKey, username, name, password, email, location, documents) VALUES (?,?,?,?,?,?,?)",
         [finalSecretKey, username, name, hashedPassword, email, location, "[]"]
       );
-
-      // Send welcome email
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
-      });
-
-      await transporter.sendMail({
-        from: process.env.GMAIL_USER,
-        to: email,
-        subject: "Welcome to Krish.com ",
-        text: `Hello ${name},\n\nWelcome to Krish.com! Your account has been created successfully.\n\nBest Regards,\nTeam Krish`,
-      });
 
       await backupUsersDB();
       res.status(201).json({ message: "User registered successfully" });
