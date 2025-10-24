@@ -108,7 +108,6 @@ const UploadDocuments = () => {
               <IoCloudUpload className="cloud-icon" />
             </div>
           </div>
-
           <input
             type="text"
             value={documentName}
@@ -117,14 +116,12 @@ const UploadDocuments = () => {
             className="upload-inputs"
             required
           />
-
           <input
             type="file"
             onChange={(e) => setFiles([...e.target.files])}
             className="upload-inputs"
             required
           />
-
           <button
             onClick={uploadDocument}
             className={uploading ? "glow-btn2" : "glow-btn"}
@@ -133,8 +130,15 @@ const UploadDocuments = () => {
             <IoCloudUpload className="i" />
             {uploading ? `Uploading (${progress}%)` : "Upload"}
           </button>
-
-          {uploading && <ClipLoader size={25} color="#36d7b7" />}
+          <div className="dash-container">
+            {" "}
+            <div className="line"></div> <p className="or-text">OR</p>{" "}
+            <div className="line"></div>{" "}
+          </div>{" "}
+          <button className="glow-btn">
+            {" "}
+            <IoCloudUpload className="i" /> Drag and Drop{" "}
+          </button>
         </div>
       </div>
     </>
