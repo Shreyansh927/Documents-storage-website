@@ -211,14 +211,14 @@
 @media (max-width: 580px) {
   .all-documents {
     grid-template-columns: repeat(2, 1fr); /* 1 column */
-    padding-left: 35%;
+    padding-left: 15%;
   }
 
   .cc {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
     flex-direction: column;
     padding-left: 20%;
   }
