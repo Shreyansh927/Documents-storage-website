@@ -25,10 +25,8 @@ const SUPABASE_BUCKET = process.env.SUPABASE_BUCKET;
 const createCryptoSecretKey = () => crypto.randomBytes(32).toString("hex");
 
 // ---------- Multer Setup ----------
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
-});
+// Use memory storage to avoid ephemeral disk issues on Render
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   const allowedTypes = [
@@ -41,6 +39,7 @@ const fileFilter = (req, file, cb) => {
   cb(null, allowedTypes.includes(file.mimetype));
 };
 
+// Multer instance
 const upload = multer({ storage, fileFilter });
 
 // ---------- Backup users.db to Supabase ----------
