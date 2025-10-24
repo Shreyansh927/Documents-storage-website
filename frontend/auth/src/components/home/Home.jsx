@@ -67,20 +67,48 @@ const Home = () => {
       );
       const cryptoKey = res.data.cryptoSecretKey;
       setCryptoSecretKey(cryptoKey);
-      const allDocuments = res.data.documents.map((each) => ({
-        documentName: CryptoJS.AES.decrypt(
-          each.documentName,
-          res.data.cryptoSecretKey
-        ).toString(CryptoJS.enc.Utf8),
-        link: CryptoJS.AES.decrypt(
-          each.link,
-          res.data.cryptoSecretKey
-        ).toString(CryptoJS.enc.Utf8),
-      }));
-      setDocuments(allDocuments || []);
-      setOriginalDocuments(allDocuments || []);
+
+      const allDocuments = res.data.documents.map((each) => {
+        let decryptedLink = "";
+        let decryptedName = "";
+
+        try {
+          decryptedLink = CryptoJS.AES.decrypt(each.link, cryptoKey).toString(
+            CryptoJS.enc.Utf8
+          );
+          // Ensure full URL
+          if (decryptedLink && !decryptedLink.startsWith("http")) {
+            decryptedLink = `${BASE_URL}/${decryptedLink.replace(/^\/+/, "")}`;
+          }
+        } catch (err) {
+          console.error("Error decrypting link:", err);
+        }
+
+        try {
+          decryptedName = CryptoJS.AES.decrypt(
+            each.documentName,
+            cryptoKey
+          ).toString(CryptoJS.enc.Utf8);
+        } catch (err) {
+          console.error("Error decrypting documentName:", err);
+        }
+
+        return {
+          documentName: decryptedName,
+          link: decryptedLink,
+          documentLock: each.documentLock || false,
+        };
+      });
+
+      // Filter out invalid docs
+      const validDocuments = allDocuments.filter(
+        (doc) => doc.link && doc.documentName
+      );
+
+      setDocuments(validDocuments);
+      setOriginalDocuments(validDocuments);
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching documents:", err);
     }
   };
 
