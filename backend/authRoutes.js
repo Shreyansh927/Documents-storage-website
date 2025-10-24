@@ -351,10 +351,13 @@ const authRoutes = (db) => {
             }
           );
 
-        if (error) {
-          console.error("Supabase upload error:", error.message);
+        if (error)
           return res.status(500).json({ success: false, error: error.message });
-        }
+
+        // Get public URL
+        const { publicUrl } = supabase.storage
+          .from(SUPABASE_BUCKET)
+          .getPublicUrl(data.path);
 
         // Save encrypted link in DB
         let docsArray = [];
@@ -366,7 +369,7 @@ const authRoutes = (db) => {
 
         const newDoc = {
           link: CryptoJS.AES.encrypt(
-            `/documents/${data.path}`,
+            publicUrl,
             user.secretCryptoKey
           ).toString(),
           documentName: CryptoJS.AES.encrypt(
