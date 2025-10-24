@@ -177,12 +177,25 @@ const Document = () => {
         setExtractedText("");
       }}
     >
-      {isPdf || isVideo ? (
+      {isPdf ? (
         <iframe
           src={fileUrl}
           allowFullScreen
           style={{ height: "100vh", width: "100vw", border: "1px solid #ccc" }}
         />
+      ) : isVideo ? (
+        <video
+          src={fileUrl}
+          controls
+          style={{
+            height: "100vh",
+            width: "100vw",
+            borderRadius: "10px",
+            background: "#000",
+          }}
+        >
+          Your browser does not support the video tag.
+        </video>
       ) : isImage ? (
         <>
           <img
