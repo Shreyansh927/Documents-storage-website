@@ -217,9 +217,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     flex-direction: column;
-    padding-left: 10%;
+    padding-left: 20%;
   }
 
   .p {
