@@ -302,11 +302,13 @@ const authRoutes = (db) => {
     }
   );
   // ---------- UPLOAD DOCUMENT ----------
+  // ---------- UPLOAD DOCUMENT ----------
   router.post(
     "/upload-document/:email",
     upload.single("document"),
     async (req, res) => {
-      const { email } = req.params;
+      // decode the email from URL params
+      const email = decodeURIComponent(req.params.email);
       const { documentName } = req.body;
 
       if (!email) return res.status(400).json({ error: "Email required" });
