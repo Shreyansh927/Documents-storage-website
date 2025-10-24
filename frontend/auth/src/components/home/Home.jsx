@@ -255,7 +255,7 @@ const Home = () => {
                               cryptoSecretKey
                             ).toString();
 
-                            if (doc.documentLock) {
+                            if (!doc.documentLock) {
                               // Navigate to verify password page
                               navigate(
                                 `/document/${encodeURIComponent(
