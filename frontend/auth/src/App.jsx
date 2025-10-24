@@ -22,12 +22,9 @@ const App = () => {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route
           path="/document/:encryptedLink/:cryptoSecretKey/:documentName"
-          element={<ProtectedRoute element={<Document />} />}
+          element={<Document />}
         />
-        <Route
-          path="/upload-documents"
-          element={<ProtectedRoute element={<UploadDocuments />} />}
-        />
+        <Route path="/upload-documents" element={<UploadDocuments />} />
         <Route
           path="/edit-profile"
           element={<ProtectedRoute element={<EditProfile />} />}
