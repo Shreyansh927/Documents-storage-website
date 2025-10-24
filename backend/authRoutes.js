@@ -192,11 +192,42 @@ const authRoutes = (db) => {
         { expiresIn: "1h" }
       );
 
-      res.cookie("jwtToken", jwtToken, {
-        httpOnly: true, // safer, frontend JS cannot read it
-        secure: process.env.NODE_ENV === "production", // only true on Render
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-        maxAge: 60 * 60 * 1000,
+      // ---------- LOGIN ----------
+      router.post("/login", async (req, res) => {
+        const { email, password } = req.body;
+
+        try {
+          const user = await db.get("SELECT * FROM user WHERE email = ?", [
+            email,
+          ]);
+          if (!user) return res.status(400).send("Invalid user");
+
+          const isValid = await bcrypt.compare(password, user.password);
+          if (!isValid) return res.status(400).send("Invalid password");
+
+          const jwtToken = jwt.sign(
+            { email: user.email },
+            process.env.JWT_SECRET || "My_SECRET_KEY",
+            { expiresIn: "1h" }
+          );
+
+          // Always use production cookie settings
+          res.cookie("jwtToken", jwtToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 60 * 60 * 1000,
+          });
+
+          res.json({
+            message: "Login successful",
+            name: user.name,
+            email: user.email,
+          });
+        } catch (err) {
+          console.error(err);
+          res.status(500).json({ message: err.message });
+        }
       });
 
       res.json({
