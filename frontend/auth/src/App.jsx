@@ -18,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<ProtectedRoute element={<Home />} />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route
           path="/document/:encryptedLink/:cryptoSecretKey/:documentName"
