@@ -268,12 +268,7 @@ const Home = () => {
                             <video
                               src={`${BASE_URL}/${doc.link}`}
                               controls
-                              style={{
-                                height: "100vh",
-                                width: "100vw",
-                                borderRadius: "10px",
-                                background: "#000",
-                              }}
+                              className="demo-image"
                             >
                               Your browser does not support the video tag.
                             </video>
