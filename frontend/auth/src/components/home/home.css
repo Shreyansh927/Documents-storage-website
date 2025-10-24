@@ -211,6 +211,7 @@
 @media (max-width: 580px) {
   .all-documents {
     grid-template-columns: repeat(2, 1fr); /* 1 column */
+    padding-left: 20%;
   }
 
   .cc {
