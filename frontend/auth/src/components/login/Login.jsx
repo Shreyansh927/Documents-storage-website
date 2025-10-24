@@ -11,12 +11,10 @@ import "slick-carousel/slick/slick-theme.css";
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-
 
   const sliderSettings = {
     dots: true,
@@ -62,7 +60,7 @@ const Login = () => {
       localStorage.setItem("userEmail", formData.email); //  fixed
       console.log(" Login successful:", message);
       // ✅ redirect after login
-      navigate("/home", { replace: true });
+      window.location.href = "/home";
     } catch (error) {
       alert(error.response?.data || "Login failed");
     }
