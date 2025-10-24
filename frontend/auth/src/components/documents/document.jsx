@@ -29,7 +29,7 @@ const Document = () => {
     try {
       const bytes = CryptoJS.AES.decrypt(encryptedLink, cryptoSecretKey);
       const decryptedLink = bytes.toString(CryptoJS.enc.Utf8);
-      const url = `${BASE_URL}${decryptedLink}`;
+      const url = `${BASE_URL}/${decryptedLink}`;
       setFileUrl(url);
     } catch (err) {
       console.error("Error decrypting link:", err);
