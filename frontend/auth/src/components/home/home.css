@@ -208,16 +208,16 @@
 }
 
 /* Mobile phones / small screens */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .all-documents {
-    grid-template-columns: repeat(2, 1fr); /* 1 column */
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
   }
 
   .cc {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 70%;
     flex-direction: column;
   }
 
