@@ -27,13 +27,19 @@ const createCryptoSecretKey = () => crypto.randomBytes(32).toString("hex");
 // ---------- Multer Setup ----------
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const ext = path.extname(file.originalname);
+    const safeName = file.originalname.replace(/\s+/g, "_").replace(ext, "");
+    cb(null, `${safeName}-${uniqueSuffix}${ext}`);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
   const allowedTypes = [
     "image/jpeg",
     "image/png",
+    "image/jpg",
     "video/mp4",
     "video/mkv",
     "application/pdf",
@@ -41,7 +47,11 @@ const fileFilter = (req, file, cb) => {
   cb(null, allowedTypes.includes(file.mimetype));
 };
 
-const upload = multer({ storage, fileFilter });
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: { fileSize: 1024 * 1024 * 500 }, // 500 MB max
+});
 
 // ---------- Backup users.db to Supabase ----------
 const backupUsersDB = async () => {
@@ -291,13 +301,12 @@ const authRoutes = (db) => {
       });
     }
   );
-
   // ---------- UPLOAD DOCUMENT ----------
   router.post(
     "/upload-document/:email",
     upload.single("document"),
     async (req, res) => {
-      const { email } = req.params; // email comes from URL params
+      const { email } = req.params;
       const { documentName } = req.body;
 
       if (!email) return res.status(400).json({ error: "Email required" });
@@ -337,8 +346,7 @@ const authRoutes = (db) => {
           email,
         ]);
 
-        if (typeof backupUsersDB === "function") await backupUsersDB();
-
+        await backupUsersDB();
         res.json({ success: true, documents: docsArray });
       } catch (err) {
         console.error("Upload document error:", err);
