@@ -136,16 +136,30 @@ const Home = () => {
             }}
           >
             <h1 className="welcome-message">Welcome, {userName}!</h1>
-            <img
-              style={{
-                height: "60px",
-                width: "60px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
-              src={`${BASE_URL}${profilePhoto}`}
-              alt="profile-photo"
-            />
+            {profilePhoto ? (
+              <img
+                style={{
+                  height: "60px",
+                  width: "60px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+                src={`${BASE_URL}${profilePhoto}`}
+                alt="profile-photo"
+              />
+            ) : (
+              <img
+                src="https://i.pinimg.com/736x/15/0f/a8/150fa8800b0a0d5633abc1d1c4db3d87.jpg"
+                alt={"no-profile-photo"}
+                classNames="folder-icon"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  objectFit: "cover",
+                  borderRadius: "40px",
+                }}
+              />
+            )}
           </div>
           <hr className="header-hr" />
           <div className="search-and-category-conatiner">
