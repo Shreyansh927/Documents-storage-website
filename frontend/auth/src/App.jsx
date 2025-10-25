@@ -25,10 +25,7 @@ const App = () => {
           element={<Document />}
         />
         <Route path="/upload-documents" element={<UploadDocuments />} />
-        <Route
-          path="/edit-profile"
-          element={<ProtectedRoute element={<EditProfile />} />}
-        />
+        <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/verify-user-email" element={<VerifyEmail />} />
         <Route path="/lock-documents/:fileName" element={<LockDocuments />} />
         <Route
