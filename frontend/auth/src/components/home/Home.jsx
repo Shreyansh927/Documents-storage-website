@@ -21,6 +21,7 @@ const Home = () => {
   const [cryptoSecretKey, setCryptoSecretKey] = useState("");
   const [documents, setDocuments] = useState([]);
   const [originalDocuments, setOriginalDocuments] = useState([]);
+  const [profilePhoto, setProfilePhoto] = useState("");
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const SECRET_KEY = "mySuperSecretKey123";
@@ -32,6 +33,7 @@ const Home = () => {
     setUserEmail(email || "");
     if (email) {
       fetchDocuments(email);
+      fetchUserInfo(email);
     }
     fetchAllUsers();
   }, []);
@@ -108,6 +110,17 @@ const Home = () => {
     setDocuments(onlyImages);
   };
 
+  const fetchUserInfo = async (email) => {
+    try {
+      const res = await axios.get(
+        `${BASE_URL}/api/userinfo/${encodeURIComponent(email)}`
+      );
+      setProfilePhoto(res.data.profileImage);
+    } catch (err) {
+      console.error(" Error fetching user info:", err);
+    }
+  };
+
   return (
     <>
       <div className="c">
@@ -115,7 +128,16 @@ const Home = () => {
       </div>
       <div className="cc">
         <div style={{ padding: "20px" }}>
-          <h1 className="welcome-message">Welcome, {userName}!</h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h1 className="welcome-message">Welcome, {userName}!</h1>
+            <img src={profilePhoto} alt="profile-photo" />
+          </div>
           <hr className="header-hr" />
           <div className="search-and-category-conatiner">
             <div className="search-box-container">
