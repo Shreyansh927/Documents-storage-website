@@ -110,6 +110,7 @@ const EditProfile = () => {
                 <br />
                 <input
                   type="text"
+                  className="inpuut"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
@@ -119,6 +120,7 @@ const EditProfile = () => {
                 <br />
                 <input
                   type="email"
+                  className="inpuut"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -132,6 +134,7 @@ const EditProfile = () => {
                 <input
                   type="file"
                   accept="image/*"
+                  className="inpuut"
                   onChange={(e) => setProfileImage(e.target.files[0])}
                 />
                 {profileImage && (
@@ -157,6 +160,7 @@ const EditProfile = () => {
                 <br />
                 <input
                   type="file"
+                  className="inpuut"
                   accept="video/*"
                   onChange={(e) => setProfileVideo(e.target.files[0])}
                 />
@@ -181,7 +185,7 @@ const EditProfile = () => {
               </div>
             </div>
 
-            <button onClick={edit} type="submit">
+            <button onClick={edit} className="glow-btn" type="submit">
               Edit
             </button>
           </form>
