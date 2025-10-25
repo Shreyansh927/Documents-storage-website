@@ -110,11 +110,10 @@ const Home = () => {
 
   return (
     <>
+      <div className="c">
+        <Header />
+      </div>
       <div className="cc">
-        <div className="c">
-          <Header />
-        </div>
-
         <div style={{ padding: "20px" }}>
           <h1 className="welcome-message">Welcome, {userName}!</h1>
           <hr className="header-hr" />

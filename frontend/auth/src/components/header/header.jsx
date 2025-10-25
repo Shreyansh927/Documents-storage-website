@@ -22,7 +22,7 @@ const Header = () => {
     <>
       <div className="header-container">
         <h1>Header</h1>
-        <div>
+        <div className="links">
           <button className="logout-button" onClick={logout}>
             Logout
           </button>

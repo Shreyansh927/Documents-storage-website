@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  width: 100%;
 }
 
 .logout-button {
@@ -37,4 +38,9 @@
   font-family: Poppins;
   box-shadow: 0 5px 5px rgba(102, 101, 102, 0.3);
   width: 160px;
+}
+
+.links{
+  display: flex;
+  align-items: center;
 }
