@@ -51,7 +51,7 @@ const LockDocuments = () => {
 
   return (
     <>
-      <div className="main-document-lock-container">
+      <div className="main-signup-container">
         <div className="document-lock-image-container">
           <source
             src="https://www.shutterstock.com/shutterstock/videos/3737157849/preview/stock-footage-cyber-security-animated-illustration-icon-video.mp4"
