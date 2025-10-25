@@ -136,7 +136,11 @@ const Home = () => {
             }}
           >
             <h1 className="welcome-message">Welcome, {userName}!</h1>
-            <img src={`${BASE_URL}${profilePhoto}`} alt="profile-photo" />
+            <img
+              style={{ height: "60px", width: "60px", borderRadius: "50%" }}
+              src={`${BASE_URL}${profilePhoto}`}
+              alt="profile-photo"
+            />
           </div>
           <hr className="header-hr" />
           <div className="search-and-category-conatiner">
