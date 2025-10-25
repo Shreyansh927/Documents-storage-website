@@ -105,72 +105,80 @@ const EditProfile = () => {
           <h1>Edit Profile</h1>
           <form onSubmit={editProfile}>
             <div className="in">
-              <label>Location</label>
-              <br />
-              <input
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-              <label htmlFor="email">Email</label>
-              <br />
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <div>
+                <label>Location</label>
+                <br />
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="email">Email</label>
+                <br />
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
             <div className="in">
-              <label>Profile Image</label>
-              <br />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => setProfileImage(e.target.files[0])}
-              />
-              {profileImage && (
-                <img
-                  src={
-                    typeof profileImage === "string"
-                      ? `https://documents-storage-website-backend-2.onrender.com${profileImage}`
-                      : URL.createObjectURL(profileImage)
-                  }
-                  alt="Profile Preview"
-                  style={{
-                    width: "400px",
-                    height: "200px",
-                    borderRadius: "10%",
-                    objectFit: "cover",
-                    marginTop: "40px",
-                  }}
+              <div>
+                <label>Profile Image</label>
+                <br />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setProfileImage(e.target.files[0])}
                 />
-              )}
-              <label>Profile Video</label>
-              <br />
-              <input
-                type="file"
-                accept="video/*"
-                onChange={(e) => setProfileVideo(e.target.files[0])}
-              />
-              {profileVideo && (
-                <video
-                  width="400"
-                  height="200"
-                  controls
-                  style={{ borderRadius: "10px", marginTop: "20px" }}
-                >
-                  <source
+                {profileImage && (
+                  <img
                     src={
-                      typeof profileVideo === "string"
-                        ? `http://localhost:4000${profileVideo}`
-                        : URL.createObjectURL(profileVideo)
+                      typeof profileImage === "string"
+                        ? `https://documents-storage-website-backend-2.onrender.com${profileImage}`
+                        : URL.createObjectURL(profileImage)
                     }
-                    type="video/mp4"
+                    alt="Profile Preview"
+                    style={{
+                      width: "400px",
+                      height: "200px",
+                      borderRadius: "10%",
+                      objectFit: "cover",
+                      marginTop: "40px",
+                    }}
                   />
-                  Your browser does not support the video tag.
-                </video>
-              )}
+                )}
+              </div>
+              <div>
+                <label>Profile Video</label>
+                <br />
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={(e) => setProfileVideo(e.target.files[0])}
+                />
+                {profileVideo && (
+                  <video
+                    width="400"
+                    height="200"
+                    controls
+                    style={{ borderRadius: "10px", marginTop: "20px" }}
+                  >
+                    <source
+                      src={
+                        typeof profileVideo === "string"
+                          ? `http://localhost:4000${profileVideo}`
+                          : URL.createObjectURL(profileVideo)
+                      }
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
             </div>
 
             <button onClick={edit} type="submit">
