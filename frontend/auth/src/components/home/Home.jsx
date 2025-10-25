@@ -137,7 +137,12 @@ const Home = () => {
           >
             <h1 className="welcome-message">Welcome, {userName}!</h1>
             <img
-              style={{ height: "60px", width: "60px", borderRadius: "50%" }}
+              style={{
+                height: "60px",
+                width: "60px",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
               src={`${BASE_URL}${profilePhoto}`}
               alt="profile-photo"
             />
