@@ -10,7 +10,7 @@ import fs from "fs";
 import path from "path";
 import CryptoJS from "crypto-js";
 import { createClient } from "@supabase/supabase-js";
-import { restoreUsersDB } from "../db.js"; // ✅ important import
+import { restoreUsersDB } from "./db.js"; // ✅ important import
 
 dotenv.config();
 const router = express.Router();
@@ -148,6 +148,7 @@ const authRoutes = (db) => {
         newHashedPassword,
         email,
       ]);
+      await backupUsersDB();
 
       return res.status(200).json({ message: "Password updated successfully" });
     } catch (err) {
