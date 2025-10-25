@@ -4,6 +4,7 @@
   align-items: center;
   padding: 0 20px;
   width: 100%;
+  background-color: white;
 }
 
 .logout-button {
@@ -23,6 +24,23 @@
   width: 140px;
 }
 
+.sm-logout-button {
+  padding: 6px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: rgb(255, 253, 253);
+
+  margin-right: 10px;
+  border: none;
+  background-color: rgb(231, 30, 87);
+  background-size: 200%;
+  cursor: pointer;
+  transition: background-position 0.6s, transform 0.3s;
+  font-family: Poppins;
+  box-shadow: 0 5px 5px rgba(102, 101, 102, 0.2);
+  width: 60px;
+}
+
 .edit-button {
   padding: 6px 25px;
   font-size: 18px;
@@ -40,7 +58,37 @@
   width: 160px;
 }
 
-.links{
+.sm-edit-button {
+  padding: 6px 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+
+  margin-right: 10px;
+  border: none;
+  background-color: rgb(73, 201, 71);
+  background-size: 200%;
+  cursor: pointer;
+  transition: background-position 0.6s, transform 0.3s;
+  font-family: Poppins;
+  box-shadow: 0 5px 5px rgba(102, 101, 102, 0.3);
+  width: 60px;
+}
+
+.links {
   display: flex;
   align-items: center;
+}
+
+.sm-links {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .sm-links {
+    display: block;
+  }
+  .links {
+    display: none;
+  }
 }
