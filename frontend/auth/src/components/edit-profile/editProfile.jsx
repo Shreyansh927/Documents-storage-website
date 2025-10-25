@@ -121,7 +121,7 @@ const EditProfile = () => {
             <img
               src={
                 typeof profileImage === "string"
-                  ? `http://localhost:4000${profileImage}`
+                  ? `https://documents-storage-website-backend-2.onrender.com${profileImage}`
                   : URL.createObjectURL(profileImage)
               }
               alt="Profile Preview"
