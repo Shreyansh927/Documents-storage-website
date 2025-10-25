@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./editProfile.css";
+import "./edit-profile.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/header";
