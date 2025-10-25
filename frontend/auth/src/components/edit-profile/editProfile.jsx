@@ -94,7 +94,12 @@ const EditProfile = () => {
       <Header />
       <div className="main-signup-container">
         <div className="image-section">
-          <img src="" alt="edit-image" />
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
+            alt="document"
+            className="document-upload-image"
+            style={{ backgroundColor: "transparent" }}
+          />
         </div>
         <div className="signup-section">
           <h1>Edit Profile</h1>
