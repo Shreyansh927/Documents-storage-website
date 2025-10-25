@@ -603,6 +603,7 @@ input::placeholder {
     height: 110vh;
     flex-direction: column;
     background-image: linear-gradient(white, white);
+    padding-left: 15%;
   }
   .uploading-container {
     width: 300px;
