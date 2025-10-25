@@ -25,8 +25,8 @@
 }
 
 .sm-logout-button {
-  padding: 6px 15px;
-  font-size: 16px;
+  padding: 10px 15px;
+  font-size: 22px;
   border-radius: 10px;
   color: rgb(255, 253, 253);
 
@@ -38,7 +38,7 @@
   transition: background-position 0.6s, transform 0.3s;
   font-family: Poppins;
   box-shadow: 0 5px 5px rgba(102, 101, 102, 0.2);
-  width: 60px;
+  width: 90px;
 }
 
 .edit-button {
@@ -59,9 +59,9 @@
 }
 
 .sm-edit-button {
-  padding: 6px 15px;
-  font-size: 16px;
-  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 22px;
+  border-radius: 10px;
   color: rgb(255, 255, 255);
 
   margin-right: 10px;
@@ -72,7 +72,7 @@
   transition: background-position 0.6s, transform 0.3s;
   font-family: Poppins;
   box-shadow: 0 5px 5px rgba(102, 101, 102, 0.3);
-  width: 60px;
+  width: 90px;
 }
 
 .links {
