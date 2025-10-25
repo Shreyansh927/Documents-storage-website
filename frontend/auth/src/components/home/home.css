@@ -54,6 +54,8 @@
   height: 200px;
   object-fit: cover;
   border-radius: 20px;
+  border: none;
+  outline: none;
 }
 
 .search-and-category-conatiner {
@@ -250,7 +252,7 @@
   }
 
   .search-box-container {
-    width: 80%;
+    width: 74%;
   }
 
   .category-button {
