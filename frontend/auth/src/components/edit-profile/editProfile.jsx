@@ -100,12 +100,14 @@ const EditProfile = () => {
           <h1>Edit Profile</h1>
           <form onSubmit={editProfile}>
             <label>Location</label>
+            <br />
             <input
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             />
             <label htmlFor="email">Email</label>
+            <br />
             <input
               type="email"
               id="email"
@@ -113,6 +115,7 @@ const EditProfile = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <label>Profile Image</label>
+            <br />
             <input
               type="file"
               accept="image/*"
@@ -136,6 +139,7 @@ const EditProfile = () => {
               />
             )}
             <label>Profile Video</label>
+            <br />
             <input
               type="file"
               accept="video/*"
@@ -159,31 +163,7 @@ const EditProfile = () => {
                 Your browser does not support the video tag.
               </video>
             )}
-            <label>Profile PDF</label>
-            <label>Profile PDF</label>
-            <label>Profile PDF</label>
-            <input
-              type="file"
-              accept="application/pdf"
-              onChange={(e) => setProfilePDF(e.target.files[0])}
-            />
-            {profilePDF && (
-              <p style={{ marginTop: "20px" }}>
-                <a
-                  href={
-                    typeof profilePDF === "string"
-                      ? `http://localhost:4000${profilePDF}`
-                      : URL.createObjectURL(profilePDF)
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {typeof profilePDF === "string"
-                    ? profilePDF.split("/").pop()
-                    : profilePDF.name}
-                </a>
-              </p>
-            )}
+
             <button onClick={edit} type="submit">
               Edit
             </button>
