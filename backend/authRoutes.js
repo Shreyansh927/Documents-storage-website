@@ -10,6 +10,7 @@ import fs from "fs";
 import path from "path";
 import CryptoJS from "crypto-js";
 import { createClient } from "@supabase/supabase-js";
+import { restoreUsersDB } from "../db.js"; // ✅ important import
 
 dotenv.config();
 const router = express.Router();
@@ -71,6 +72,11 @@ const backupUsersDB = async () => {
 
 // ---------- Routes ----------
 const authRoutes = (db) => {
+  // ✅ Restore DB before all routes
+  router.use(async (req, res, next) => {
+    await restoreUsersDB();
+    next();
+  });
   // ---------- SIGNUP ----------
   router.post("/signup", async (req, res) => {
     const { username, name, password, email, location } = req.body;
