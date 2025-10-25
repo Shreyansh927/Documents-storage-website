@@ -1,7 +1,5 @@
 .main-document-container {
-  
   font-family: Poppins;
-  height: 50vh;
 
   position: relative;
 }
@@ -34,7 +32,7 @@
 .buttons-container {
   position: fixed;
   bottom: 5%;
-  right: 2%;
+  right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -228,12 +226,10 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
-
-
 @media screen and (max-width: 768px) {
   .main-document-container {
-    height: 30vh;
-    width: 80vw;
+    
+    width: 100vw;
   }
   .buttons-container {
     left: 60%;

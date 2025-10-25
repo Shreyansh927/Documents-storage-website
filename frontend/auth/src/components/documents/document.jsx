@@ -178,9 +178,19 @@ const Document = () => {
       }}
     >
       {isPdf ? (
-        <iframe src={fileUrl} allowFullScreen className="document-image" />
+        <iframe
+          src={fileUrl}
+          allowFullScreen
+          className="document-image"
+          style={{ border: "none" }}
+        />
       ) : isVideo ? (
-        <video src={fileUrl} controls className="document-image">
+        <video
+          src={fileUrl}
+          controls
+          className="document-image"
+          style={{ border: "none" }}
+        >
           Your browser does not support the video tag.
         </video>
       ) : isImage ? (
