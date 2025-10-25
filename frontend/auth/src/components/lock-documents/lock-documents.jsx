@@ -53,10 +53,6 @@ const LockDocuments = () => {
     <>
       <div className="main-signup-container">
         <div className="document-lock-image-container">
-          <source
-            src="https://www.shutterstock.com/shutterstock/videos/3737157849/preview/stock-footage-cyber-security-animated-illustration-icon-video.mp4"
-            type="video/mp4"
-          ></source>
           <img
             src="https://img.freepik.com/free-vector/security-access-card-abstract-concept-illustration_335657-3719.jpg?t=st=1761163181~exp=1761166781~hmac=31bc396ac001f0c225bc16adeefdc41b1aa345c99cb1274cc5dad330a005955d&w=1480"
             alt="lock"
