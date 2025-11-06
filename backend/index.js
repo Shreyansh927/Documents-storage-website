@@ -119,7 +119,7 @@ const startServer = async () => {
         console.log(" Extracted Text:", data.text);
 
         const response = await axios.post(
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBE9xbENPJURmat3usnhN8TNeGvioRSQeY",
+          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=AIzaSyBE9xbENPJURmat3usnhN8TNeGvioRSQeY",
           {
             contents: [
               {
